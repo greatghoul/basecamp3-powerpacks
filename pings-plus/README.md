@@ -13,7 +13,7 @@ A User Script to enhance the Pings
 
 ## Changelog
 
-##### v1.0
+##### v0.1
 
 - Rename a ping
 - Pin / Unpin
