@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         Basecamp3 Powerpack - Pings+
-// @namespace    http://tampermonkey.net/
+// @name         Basecamp3 Powerpacks - Pings Plus
+// @namespace    https://github.com/greatghoul/basecamp3-powerpacks
 // @version      0.1
 // @description  Pings enhancement.
 // @author       greatghoul@gmail.com
