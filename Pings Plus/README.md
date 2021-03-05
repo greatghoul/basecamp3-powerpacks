@@ -9,7 +9,7 @@ A User Script to enhance the Pings
 
 ## Screenshots
 
-N/A
+![](https://i.imgur.com/e1ILOtI.gif)
 
 ## Changelog
 
@@ -19,5 +19,3 @@ N/A
 - Pin / Unpin
 - Sort pinned Pings
 - Quick access pinned Pings
-
-
