@@ -11,7 +11,7 @@ A User Script to enhance the Pings
 
 Make sure you have [Tamermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) Chrome Extension or similar addon installed.
 
-<a href="https://github.com/greatghoul/basecamp3-powerpacks/raw/main/pings-plus/bs3-pings-plus.user.js" class="btn d-md-inline-block">Install</a>
+> [bs3-pings-plus.user.js](https://github.com/greatghoul/basecamp3-powerpacks/raw/main/pings-plus/bs3-pings-plus.user.js)
 
 ## Screenshots
 
