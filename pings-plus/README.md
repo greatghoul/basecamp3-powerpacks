@@ -15,7 +15,8 @@ Make sure you have [Tamermonkey](https://chrome.google.com/webstore/detail/tampe
 
 ## Screenshots
 
-![](https://i.imgur.com/e1ILOtI.gif)
+![](https://i.imgur.com/6hIoW6r.png)
+![](https://i.imgur.com/jC6L5Vn.png)
 
 ## Changelog
 
