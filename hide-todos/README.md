@@ -1,6 +1,6 @@
 ## Description
 
-Add a function to hide all todos in basecamp todolist, so you can sort the todo list conveniently.
+Add a function to hide all todos in basecamp todolist page, so you can sort the todolists conveniently.
 
 ## Features
 
