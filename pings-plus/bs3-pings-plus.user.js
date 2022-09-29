@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Basecamp3 Powerpacks - Pings Plus
 // @namespace    https://github.com/greatghoul/basecamp3-powerpacks
-// @version      0.1
-// @description  Pings enhancement.
+// @version      1.0
+// @description  Pings enhancements: Pin, rename and extend.
 // @author       greatghoul@gmail.com
 // @match        https://3.basecamp.com/*
 // @grant        GM_addStyle
@@ -34,6 +34,34 @@
 
     function quote (text) {
         return (text || '').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '\\\"');
+    }
+
+    function delay({ action, timeout = 300 }) {
+        const timer = setTimeout(() => {
+            clearTimeout(timer);
+            action();
+        }, timeout);
+    }
+
+    function waitFor({ expect, action, timeout = 5000 }) {
+        let target = null
+
+        const timer = setTimeout(() => {
+            action(target);
+        }, timeout);
+
+        const watcher = () => {
+            target = expect()
+            if (target) {
+                clearTimeout(timer)
+                action(target)
+            } else {
+                delay({ action: watcher });
+            }
+
+        }
+
+        watcher();
     }
 
     function getChatRecord (id) {
@@ -101,16 +129,66 @@
                 <a data-action="pin" style="display: none">Pin</a>
                 <a data-action="unpin" style="display: none">Unpin</a>
                 <a data-action="rename">Rename</a>
+                <a data-action="extend">Extend</a>
             `;
         });
 
         nameToolsNode.querySelector('[data-action=pin]').addEventListener('click', pinChat, false);
         nameToolsNode.querySelector('[data-action=unpin]').addEventListener('click', unpinChat, false);
         nameToolsNode.querySelector('[data-action=rename]').addEventListener('click', renameChat, false);
+        nameToolsNode.querySelector('[data-action=extend]').addEventListener('click', extendChat, false);
 
         nameToolsNode.querySelector('[data-action=pin]').style.display = chat.pinned ? 'none' : 'inline';
         nameToolsNode.querySelector('[data-action=unpin]').style.display = chat.pinned ? 'inline' : 'none';
+    }
 
+    // Get members for current ping.
+    function getMembers() {
+        const url = (
+            document.location.href.
+            replace(/@.*$/, '').
+            concat('.json')
+        )
+
+        const options = {
+            method: 'GET',
+            headers: {
+                'CONTENT_TYPE': 'APPLICATION/JSON'
+            }
+        }
+
+        return fetch(url, options).
+               then(resp => resp.json()).
+               then(data => data.people)
+    }
+
+    // Open the Pings popup and add current ping members.
+    function extendChat () {
+        const pingsBtn = document.querySelector('.nav__link--pings');
+
+        const handleUpdate = target => {
+            const loading = document.createElement('p');
+            loading.innerHTML = 'Extending...';
+            loading.style.color = '#888';
+            target.appendChild(loading);
+
+            getMembers().then((members) => {
+                const ids = members.map(x => x.id);
+                const ac = document.querySelector('bc-autocomplete');
+                ac.setSelectedValues(ids);
+                loading.remove();
+            })
+        }
+
+        const handleClick = () => {
+            pingsBtn.click();
+            waitFor({
+                expect: () => document.querySelector('.show-button-on-suggest'),
+                action: handleUpdate
+            });
+        }
+
+        delay({ action: handleClick })
     }
 
     function pinChat () {
@@ -138,6 +216,7 @@
           renderChatHeaderAddon();
         }
     }
+
 
     function renderChatPopupAddon () {
         const chatPopup = getChatPopup();
