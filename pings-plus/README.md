@@ -6,6 +6,7 @@ A User Script to enhance the Pings
 
 - Rename a Ping
 - Pin a Ping to the quick start popup
+- Extend a Ping to add more members (unfortunately, messages will not sync)
 
 ## Install
 
