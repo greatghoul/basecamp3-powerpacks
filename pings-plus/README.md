@@ -18,10 +18,15 @@ Make sure you have [Tamermonkey](https://chrome.google.com/webstore/detail/tampe
 
 ![](https://i.imgur.com/6hIoW6r.png)
 ![](https://i.imgur.com/jC6L5Vn.png)
+![](https://i.imgur.com/ocyjjpH.png)
 
 ## Changelog
 
-##### v0.1
+### v1.0
+
+- Add a function to extend a Ping to add more members.
+
+### v0.1
 
 - Rename a ping
 - Pin / Unpin
